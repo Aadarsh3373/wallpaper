@@ -1,0 +1,25 @@
+
+
+1) Change the wifi security from WPA/WPA2 to WEP of your access point AP.
+
+2) Connect to the AP:
+
+Download and install libiw30 and wireless-tools.
+
+iwconfig wlan0 essid "AP_here" key "s:password_here"    
+echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+dhclient wlan0
+route add default gw GATWAY_HERE
+ping -c2 8.8.8.8 # ping test
+
+3) Install the wpa_supplicant package :
+
+apt update
+apt install wpasupplicant 
+
+(network-manager package is useful, allowing you to connect through nmcli command line )
+
+4) Change the security settings of your access point to WPA/WPA2. Using the wpa_supplicant you will be able to connect to an AP protect with WPA/WPA2.
+
+man iwconfig
+
